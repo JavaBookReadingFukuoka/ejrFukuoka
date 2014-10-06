@@ -8,7 +8,7 @@
 ## [第６章 enumとアノテーション](https://github.com/erjFukuoka/repos/tree/master/Chapter06)
 ## [第７章 メソッド](https://github.com/erjFukuoka/repos/tree/master/Chapter07)
 ## [第８章 プログラミング全般](https://github.com/erjFukuoka/repos/tree/master/Chapter08)
-## [第９章 ](https://github.com/erjFukuoka/repos/tree/master/Chapter09)
-## [第１０章 ](https://github.com/erjFukuoka/repos/tree/master/Chapter10)
+## [第９章 例外](https://github.com/erjFukuoka/repos/tree/master/Chapter09)
+## [第１０章 平行性](https://github.com/erjFukuoka/repos/tree/master/Chapter10)
 ## [第１１章 シリアライズ](https://github.com/erjFukuoka/repos/tree/master/Chapter11)
 
