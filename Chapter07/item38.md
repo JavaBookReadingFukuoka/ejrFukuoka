@@ -53,6 +53,8 @@ private static void sort(long a[], int offset, int lengh) {
 }
 ```
 
+アサーションは-eaオプション未指定時にコストが発生しない事が重要との意見(輪読会にて)。
+
 コンストラクタではパラメータの検査は非常に重要。
 
 ## この規則の例外
