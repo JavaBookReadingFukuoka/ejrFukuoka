@@ -24,6 +24,8 @@ public class CollectionClassifier {
         };
         for (Collection<?> c : collections)
             System.out.println(classify(c));
+        System.out.println(classify((HashSet<String>)collections[0])); // これなら”Set”
+        System.out.println(classify((ArrayList<BigInteger>)collections[1])); // これなら”List”
     }
 }
 ```
@@ -34,21 +36,21 @@ public class CollectionClassifier {
 ## 一方、オーバーライドされたメソッドは実行時に判定される
 
 ```Java
-class ラーメン {
+class Foodラーメン {
     String name() { return "ラーメン"; }
 }
-class 豚骨ラーメン extends ラーメン {
+class Food豚骨ラーメン extends Foodラーメン {
     @Override String name() { return "豚骨ラーメン"; }
 }
-class 長浜ラーメン extends 豚骨ラーメン {
+class Food長浜ラーメン extends Food豚骨ラーメン {
     @Override String name() { return "長浜ラーメン"; }
 }
 public class Overriding {
     public static void main(String[] args) {
-        ラーメン[] ramens = {
-            new ラーメン(), new 豚骨ラーメン(), new 長浜ラーメン()
+        Foodラーメン[] ramens = {
+            new Foodラーメン(), new Food豚骨ラーメン(), new Food長浜ラーメン()
         };
-        for (ラーメン ramen : ramens)
+        for (Foodラーメン ramen : ramens)
             System.out.println(ramen.name());
     }
 }
