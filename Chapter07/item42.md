@@ -6,16 +6,23 @@ Java1.4以前のプログラムで広く使われていたイディオムがJava
 
 ```Java
 public class ArrayToString {
-    public static void main(String... args) {
+    public static void main(String ... args) {
+        //基本型配列
         int[] digits = {3, 1, 4, 1, 5, 9, 2, 6, 5, 4};
-        System.out.println(java.util.Arrays.asList(digits));
-        System.out.println(java.util.Arrays.toString(digits));
+        System.out.println(java.util.Arrays.asList(digits));//JDK1.4でコンパイルエラー
+        System.out.println(java.util.Arrays.toString(digits));//JDK1.5以降のAPI
+        //参照型配列
+        Integer[] digits2 = {3, 1, 4, 1, 5, 9, 2, 6, 5, 4};//JDK1.4では手動ボクシング必要
+        System.out.println(java.util.Arrays.asList(digits2));
+        System.out.println(java.util.Arrays.toString(digits2));//JDK1.5以降のAPI
     }
 }
 ```
 上記を実行すると（Java5.0以降）、以下のように表示される。
 ```
 [[I@7f31245a]
+[3, 1, 4, 1, 5, 9, 2, 6, 5, 4]
+[3, 1, 4, 1, 5, 9, 2, 6, 5, 4]
 [3, 1, 4, 1, 5, 9, 2, 6, 5, 4]
 ```
 （…でももはやJava9でjava1.4サポートされなくなるらしいし、見捨てて良く無い？）
