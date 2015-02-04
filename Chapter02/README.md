@@ -1,11 +1,11 @@
 # 第２章 オブジェクトの生成と消滅
 
-## 1章、2章
+## 項目1、項目2
 ### スライド
 [Effective Java輪読会 vol0](http://www.slideshare.net/leecgeun/effective-javavol0)
 
-## 3章
+## 項目3
 
-## 4章
+## 項目4
 
-## 5章
+## 項目5
