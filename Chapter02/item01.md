@@ -1,3 +1,3 @@
-# €–Ú1 ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ì‘ã‚í‚è‚Éstaticƒtƒ@ƒNƒgƒŠ[ƒƒ\ƒbƒh‚ğŒŸ“¢‚·‚é
-## ƒXƒ‰ƒCƒh
-[Effective Java—Ö“Ç‰ï vol0](http://www.slideshare.net/leecgeun/effective-javavol0)
+# é …ç›®1 ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®ä»£ã‚ã‚Šã«staticãƒ•ã‚¡ã‚¯ãƒˆãƒªãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æ¤œè¨ã™ã‚‹
+## ã‚¹ãƒ©ã‚¤ãƒ‰
+[Effective Javaè¼ªèª­ä¼š vol0](http://www.slideshare.net/leecgeun/effective-javavol0)

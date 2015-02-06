@@ -1,34 +1,34 @@
-# ����7 �t�@�C�i���C�U�������
-## �t�@�C�i���C�U�͗\�z�s�\�Ŋ댯
-C++�̃f�X�g���N�^�Ƃ͈Ⴂ�A��ʂ̃v���O���}�͂قڎg���K�v�͂Ȃ��B�s�v�ȃI�u�W�F�N�g��GC��������Ă����B
-�������ȊO�̎�������Ȃ�try-finally���g���B
+# 項目7 ファイナライザを避ける
+## ファイナライザは予想不可能で危険
+C++のデストラクタとは違い、一般のプログラマはほぼ使う必要はない。不要なオブジェクトはGCが回収してくれる。
+メモリ以外の資源回収ならtry-finallyを使う。
 
-## �t�@�C�i���C�U�̌��_
-�����Ɏ��s�����ۏ؂��Ȃ��B���ԓI�ɐ���̂��邱�Ƃ̓t�@�C�i���C�U�ōs���Ă͂����Ȃ��B(�t�@�C���N���[�Y��)
-�t�@�C�i���C�U�̑�������GC�̃A���S���Y���ˑ��A�e�X�g���Ɩ{�ԂőS���Ⴄ���Ƃ����邽�ߗ\�z������B
-�t�@�C�i���C�U�����s���ꂸ�Ƀv���O�������I������\��������B
-�p�t�H�[�}���X�y�i���e�B���傫���B
+## ファイナライザの欠点
+即座に実行される保証がない。時間的に制約のあることはファイナライザで行ってはいけない。(ファイルクローズ等)
+ファイナライザの即時性はGCのアルゴリズム依存、テスト環境と本番で全く違うこともあるため予想が難しい。
+ファイナライザが実行されずにプログラムが終了する可能性もある。
+パフォーマンスペナルティが大きい。
 
-## �t�@�C�i���C�U�̂����
-�����I�I�����\�b�h��p�ӂ��A�s�v�ɂȂ������_�Ń��\�b�h���Ăяo���B
-��Ԃ��L�����A�I����ɌĂяo���ꂽ�ꍇ��IllegaltateException������[����B
+## ファイナライザのかわり
+明示的終了メソッドを用意し、不要になった時点でメソッドを呼び出す。
+状態を記憶し、終了後に呼び出された場合はIllegaltateExceptionをすろーする。
 
-### ��
-* InputStream�AOutputStream clos���\�b�h
-* java.util.Timer cancel���\�b�h
+### 例
+* InputStream、OutputStream closメソッド
+* java.util.Timer cancelメソッド
 
-�����I�I�����\�b�h�͑��try-finally�ƈꏏ�Ɏg�p����B
+明示的終了メソッドは大抵try-finallyと一緒に使用する。
 
-## �t�@�C�i���C�U���L���Ȏ�
-1. �����I�I�����\�b�h�̌Ăяo����Y�ꂽ���̈��S�l�b�g
-��L�̗�̃N���X�̃t�@�C�i���C�U�ɂ���������Ă���B
-���̏ꍇ�A�o�O�ł��邱�Ƃ��������߂Ɍx�����L�^���ׂ��I
+## ファイナライザが有効な時
+1. 明示的終了メソッドの呼び出しを忘れた時の安全ネット
+上記の例のクラスのファイナライザにも実装されている。
+この場合、バグであることを示すために警告を記録すべき！
 
-2. �l�C�e�B�u�s�A�����I�u�W�F�N�g
-�H�H�H
+2. ネイティブピアを持つオブジェクト
+？？？
 
-## �t�@�C�i���C�U�͎����I�ɘA�����Ȃ�
-�t�@�C�i���C�U���������ꂽ�N���X���p�������T�u�N���X���t�@�C�i���C�U���I�[�o�[���C�h���Ă���Ƃ��́A�X�[�p�[�N���X�̃t�@�C�i���C�U���Ăт����Ȃ���΂Ȃ�Ȃ��B
+## ファイナライザは自動的に連鎖しない
+ファイナライザが実装されたクラスを継承したサブクラスがファイナライザをオーバーライドしているときは、スーパークラスのファイナライザを呼びださなければならない。
 
-## �t�@�C�i���C�U�K�[�f�B�A�����g�p����
-�H�H�H
+## ファイナライザガーディアンを使用する
+？？？
