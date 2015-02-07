@@ -46,7 +46,7 @@ public bar() {
 
 ## 余談
 + スレッドの停止にThread.stop()を使ってはダメ。本質的に安全ではない。<br>
-  [Java 非推奨スレッドプリミティブ(Oracle)](http://docs.oracle.com/javase/jp/7/technotes/guides/concurrency/threadPrimitiveDeprecation.html)~
+  [Java 非推奨スレッドプリミティブ(Oracle)](http://docs.oracle.com/javase/jp/7/technotes/guides/concurrency/threadPrimitiveDeprecation.html)<br>
   [THI05-J. スレッドの強制終了にThread.stop()メソッドを使用しない(JPCERT)](https://www.jpcert.or.jp/java-rules/thi05-j.html)
 + 加算演算子（++）はatomicでない
 + 採番処理では[java.util.concurrent.atomic.AtomicLong](http://docs.oracle.com/javase/jp/8/api/java/util/concurrent/atomic/AtomicLong.html)を使うのが良い
