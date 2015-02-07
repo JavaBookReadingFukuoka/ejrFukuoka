@@ -12,5 +12,5 @@
 並行して使用されるクラスはスレッドセーフしてドキュメントに記載すべきだが、そうでない場合は内部的に同期しない方が良い。
 
 ## 余談
-+同期された領域外で呼び出される異質なメソッドはオープンコール(open call)と呼ばれる。
-+[CopyOnWriteArrayList](https://docs.oracle.com/javase/jp/8/api/java/util/concurrent/CopyOnWriteArrayList.html)は通常非常に効率が悪いが、ArrayListのスレッドセーフ版として使えそう。<br>イテレータはイテレータ作成以降のリストへの追加・削除・変更を反映しない。
++ 同期された領域外で呼び出される異質なメソッドはオープンコール(open call)と呼ばれる。
++ [CopyOnWriteArrayList](https://docs.oracle.com/javase/jp/8/api/java/util/concurrent/CopyOnWriteArrayList.html)は通常非常に効率が悪いが、ArrayListのスレッドセーフ版として使えそう。<br>イテレータはイテレータ作成以降のリストへの追加・削除・変更を反映しない。
