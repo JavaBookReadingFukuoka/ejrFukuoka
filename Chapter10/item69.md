@@ -75,7 +75,37 @@ BlockingQueueには待ち合わせるメソッドがある。
 + [Exchanger](http://docs.oracle.com/javase/jp/8/api/java/util/concurrent/Exchanger.html) : スレッドをペアにして、ペア内の要素を交換できる同期ポイント
 
 ### 使い方（CountDownLatch）
-（あとで）
++ [public CountDownLatch(int count)](http://docs.oracle.com/javase/jp/8/api/java/util/concurrent/CountDownLatch.html#CountDownLatch-int-) : カウントを指定してラッチを初期化する。
++ [public void await()](http://docs.oracle.com/javase/jp/8/api/java/util/concurrent/CountDownLatch.html#await--) : ラッチのカウント・ダウンがゼロになるまで待機する。
++ [public void countDown()](http://docs.oracle.com/javase/jp/8/api/java/util/concurrent/CountDownLatch.html#countDown--) :
+```
+public static long time(Executor executor, int concurrency, final Runnable action) throws InterruptedException {
+    final CountDownLatch ready = new CountDownLatch(concurrency);
+    final CountDownLatch start = new CountDownLatch(1);
+    final CountDownLatch done = new CountDownLatch(concurrency);
+    for (int i=0;i<concurrency; i++) {
+        executor.execute(() -> {
+            ready.countDown(); // タイマーに準備OKを伝える
+            try {
+                start.await(); // 同僚が準備OKになるまで待つ
+                action.run();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            } finally {
+                done.countDown(); // タイマーに終了したことを伝える
+            }
+        });
+    }
+    ready.await(); // すべてのワーカーが準備OKになるのを待つ
+    long startNanos = System.nanoTime();
+    start.countDown(); // そしてスタート！
+    done.await(); //  すべてのワーカーがゴールするのを待つ
+    return System.nanoTime() - startNanos;
+}
+```
+readyは準備完了チェック用なので、concurrency個のスレッドが準備できたらOK。<br>
+startは各スレッドの開始直前待機用なので、action.run()の直前で待ち、親スレッドがcountDown()することで開始。<br>
+doneは完了チェック用なので、concurrency個のスレッドが処理終了したらOK。
 
 ## 仕方なくwaitメソッドを使用する場合
 必ずwaitループイディオムを使うこと！！ループの外で決して呼び出してはならない！！
